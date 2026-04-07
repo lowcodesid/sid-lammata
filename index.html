@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sid Lammata — AI Strategy Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #F8F6F2;
+  --surface:    #EFECE6;
+  --white:      #FFFFFF;
+  --border:     #E2DDD6;
+  --border-2:   #D0CAC0;
+  --text:       #18170F;
+  --text-2:     #5A564E;
+  --text-3:     #9C9488;
+  --accent:     #1E52A4;
+  --accent-bg:  #EBF0FA;
+  --accent-2:   #B56B2A;
+  --accent-2bg: #FBF1E8;
+  --green:      #1A6B2A;
+  --green-bg:   #E8F5EB;
+  --font:       'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(248,246,242,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 54px;
+}
+.nav-brand { font-size: 16px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.3px; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 6px; font-size: 12px !important; font-weight: 600 !important; }
+.nav-cta:hover { opacity: .88; }
+
+/* ─── HERO ─── */
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 60px 52px 52px;
+  display: grid; grid-template-columns: 1fr 320px;
+  gap: 56px; align-items: start;
+}
+
+.hero-eyebrow {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.hero-eyebrow::before { content:''; width:24px; height:1.5px; background:var(--accent); }
+
+.hero-name {
+  font-size: 62px; font-weight: 800;
+  line-height: .94; letter-spacing: -2.5px;
+  color: var(--text); margin-bottom: 20px;
+}
+.hero-name span { color: var(--accent); }
+
+.hero-positioning {
+  font-size: 17px; font-weight: 400; font-style: italic;
+  color: var(--text-2); line-height: 1.55;
+  border-left: 3px solid var(--accent-2);
+  padding-left: 18px; margin-bottom: 22px; max-width: 520px;
+}
+
+.hero-about {
+  font-size: 14px; font-weight: 300;
+  color: var(--text-2); line-height: 1.85;
+  max-width: 540px; margin-bottom: 26px;
+}
+.hero-about strong { font-weight: 600; color: var(--text); }
+
+/* Contact inline */
+.hero-contact {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;
+}
+.hc-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12.5px; font-weight: 500; color: var(--text-2);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 5px 12px;
+  text-decoration: none; transition: border-color .15s, color .15s;
+}
+.hc-item:hover { border-color: var(--accent); color: var(--accent); }
+.hc-item svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-p { font-size: 13px; font-weight: 600; background: var(--accent); color: var(--white); padding: 10px 22px; border-radius: 7px; text-decoration: none; }
+.btn-p:hover { opacity: .88; }
+.btn-s { font-size: 13px; font-weight: 500; background: transparent; color: var(--text); padding: 10px 20px; border-radius: 7px; border: 1.5px solid var(--border); text-decoration: none; }
+.btn-s:hover { border-color: var(--text-3); }
+
+/* Hero right: stats */
+.stat-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.stat-num { font-size: 38px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 3px; }
+.stat-label { font-size: 12px; font-weight: 400; color: var(--text-2); }
+.stat-div { height: 1px; background: var(--border); }
+.avail {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green-bg); color: var(--green);
+  font-size: 11px; font-weight: 600;
+  padding: 5px 11px; border-radius: 20px;
+  border: 1px solid rgba(26,107,42,.2);
+}
+.avail-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+/* ─── BODY ─── */
+.page-body {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 52px 80px;
+  display: grid; grid-template-columns: 240px 1fr;
+  gap: 44px; align-items: start;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar { position: sticky; top: 70px; display: flex; flex-direction: column; gap: 22px; }
+
+.s-block {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 20px;
+}
+.s-head {
+  font-size: 9px; font-weight: 700; letter-spacing: 2.2px;
+  text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.s-head::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* Certifications with logo badges */
+.cert-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.cert-item:last-child { border-bottom: none; padding-bottom: 0; }
+.cert-logo {
+  width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; font-weight: 800; letter-spacing: .3px;
+}
+.cert-logo-aws { background: #FF9900; color: #fff; }
+.cert-logo-safe { background: #003366; color: #fff; }
+.cert-logo-scrum { background: #009FDA; color: #fff; }
+.cert-name { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.cert-issuer { font-size: 10.5px; color: var(--text-3); margin-top: 1px; }
+
+/* Education */
+.edu-entry { padding: 6px 0; border-bottom: 1px solid var(--border); }
+.edu-entry:last-child { border-bottom: none; }
+.edu-deg { font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 1px; }
+.edu-school { font-size: 11.5px; color: var(--text-2); }
+.edu-note { font-size: 10.5px; color: var(--text-3); margin-top: 2px; }
+
+/* Industries */
+.ind-row {
+  font-size: 11.5px; color: var(--text-2);
+  padding: 4px 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.ind-row:last-child { border-bottom: none; }
+.ind-row::before { content:''; width:3px; height:3px; background:var(--accent-2); border-radius:50%; flex-shrink:0; }
+
+/* ─── MAIN ─── */
+.main-content { display: flex; flex-direction: column; gap: 44px; }
+
+.sec-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.sec-title { font-size: 9.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
+.sec-rule { flex: 1; height: 1px; background: var(--border); }
+
+/* Skills as tags */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.sk-tag {
+  font-size: 12px; font-weight: 500;
+  background: var(--white); color: var(--text-2);
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 5px 13px; transition: border-color .15s, color .15s;
+}
+.sk-tag:hover { border-color: var(--accent); color: var(--accent); }
+.sk-tag-accent {
+  background: var(--accent-bg); color: var(--accent);
+  border-color: rgba(30,82,164,.2);
+}
+.sk-tag-warm {
+  background: var(--accent-2bg); color: var(--accent-2);
+  border-color: rgba(181,107,42,.2);
+}
+
+/* Capabilities */
+.cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cap-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 18px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.cap-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(30,82,164,.06); }
+.cap-tag-badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-bg);
+  padding: 2px 8px; border-radius: 3px; margin-bottom: 8px;
+}
+.cap-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.cap-text { font-size: 12.5px; color: var(--text-2); line-height: 1.65; }
+
+/* ─── EXPERIENCE TIMELINE ─── */
+
+/* Act banner — the thing you see before each era */
+.act-banner {
+  display: flex; align-items: stretch;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  margin-bottom: 20px;
+}
+.act-num {
+  width: 56px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 800; color: var(--white);
+  letter-spacing: -1px;
+}
+.act-num-1 { background: var(--text-3); }
+.act-num-2 { background: var(--accent-2); }
+.act-num-3 { background: var(--accent); }
+.act-body { padding: 12px 16px; }
+.act-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 2px;
+}
+.act-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.act-period { font-size: 11.5px; color: var(--text-3); }
+
+.era-group { margin-bottom: 36px; }
+
+.exp-entry {
+  display: grid; grid-template-columns: 96px 1fr;
+  gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.exp-entry:last-child { border-bottom: none; }
+
+.exp-meta { padding-top: 2px; }
+.exp-date { font-size: 12px; color: var(--text-3); line-height: 1.5; margin-bottom: 4px; }
+.exp-company { font-size: 12px; font-weight: 700; color: var(--accent); line-height: 1.4; }
+.exp-co-note { font-size: 11px; color: var(--text-3); font-weight: 400; }
+
+.exp-role { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -.2px; }
+.exp-points { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.exp-points li {
+  font-size: 13px; color: var(--text-2);
+  padding-left: 14px; position: relative; line-height: 1.65;
+}
+.exp-points li::before { content:'–'; position:absolute; left:0; color:var(--accent-2); font-weight:600; }
+
+.exp-callout {
+  display: flex; align-items: flex-start; gap: 9px;
+  border-radius: 7px; padding: 9px 13px; margin-top: 10px;
+}
+.exp-callout-blue { background: var(--accent-bg); border: 1px solid rgba(30,82,164,.14); }
+.exp-callout-warm { background: var(--accent-2bg); border: 1px solid rgba(181,107,42,.18); }
+.exp-callout-text { font-size: 12px; font-weight: 500; line-height: 1.55; }
+.exp-callout-blue .exp-callout-text { color: var(--accent); }
+.exp-callout-warm .exp-callout-text { color: var(--accent-2); }
+
+.exp-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.exp-tag {
+  font-size: 10px; font-weight: 500;
+  background: var(--surface); color: var(--text-2);
+  padding: 3px 9px; border-radius: 20px; border: 1px solid var(--border);
+}
+
+/* Startup badge */
+.startup-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--accent-2bg); color: var(--accent-2);
+  font-size: 9.5px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 3px;
+  margin-bottom: 6px; border: 1px solid rgba(181,107,42,.18);
+}
+
+/* Media / Portfolio */
+.media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.media-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  text-decoration: none; color: inherit; display: block;
+  transition: box-shadow .2s, border-color .2s;
+}
+.media-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); border-color: var(--text-3); }
+.media-thumb {
+  height: 88px; display: flex; align-items: center; justify-content: center; font-size: 32px;
+}
+.mt-blue  { background: linear-gradient(135deg,#EBF0FA,#D6E4F7); }
+.mt-warm  { background: linear-gradient(135deg,#FBF1E8,#F5DFC4); }
+.mt-slate { background: linear-gradient(135deg,#F0EEF0,#E4E0E8); }
+.mt-green { background: linear-gradient(135deg,#E8F5EB,#D4EDD8); }
+.media-body { padding: 14px 16px; }
+.media-type { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+.media-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+.media-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
+.media-cta { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: var(--accent); margin-top: 9px; text-decoration: none; }
+.media-card:hover .media-cta::after { content:'→'; margin-left: 3px; }
+
+/* Articles */
+.article-list { display: flex; flex-direction: column; gap: 10px; }
+.article-item {
+  display: flex; gap: 14px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; text-decoration: none; color: inherit;
+  transition: border-color .2s;
+}
+.article-item:hover { border-color: var(--accent); }
+.art-num { font-size: 30px; font-weight: 800; color: var(--border); line-height: 1; flex-shrink: 0; width: 26px; }
+.art-tag { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-2); margin-bottom: 3px; }
+.art-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.art-desc { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 52px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-name { font-size: 15px; font-weight: 700; color: var(--text); }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a { font-size: 12px; color: var(--text-3); text-decoration: none; }
+.footer-links a:hover { color: var(--text); }
+
+/* Animations */
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+.fade { animation: fadeUp .5s ease both; }
+.d1 { animation-delay: .06s; } .d2 { animation-delay: .12s; } .d3 { animation-delay: .18s; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  nav, .hero, .page-body, footer { padding-left: 20px; padding-right: 20px; }
+  .hero { grid-template-columns: 1fr; gap: 28px; }
+  .hero-name { font-size: 44px; }
+  .page-body { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .cap-grid, .media-grid { grid-template-columns: 1fr; }
+  .exp-entry { grid-template-columns: 80px 1fr; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Sid Lammata</a>
+  <div class="nav-links">
+    <a href="#skills">Expertise</a>
+    <a href="#experience">Career</a>
+    <a href="#media">Portfolio</a>
+    <a class="nav-cta" href="mailto:sid.lammata@gmail.com">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero fade">
+  <div>
+    <div class="hero-eyebrow">AI Strategy · Transformation · Delivery Leadership</div>
+    <h1 class="hero-name">Sid<br><span>Lammata</span></h1>
+    <p class="hero-positioning">I help growth-oriented organisations close the gap between AI ambition and executed reality — quickly, responsibly, and without the chaos that usually comes with moving fast.</p>
+    <p class="hero-about">
+      With <strong>20+ years across 10+ industries</strong>, I'm typically brought in when there's a gap between what leadership wants to achieve and what the organisation is actually capable of delivering. My background spans electrical engineering in India, enterprise transformation in the UK, and progressively senior AI strategy and delivery roles across Australia — giving me <strong>genuine technical fluency combined with board-level communication</strong> that most consultants can't offer.
+    </p>
+
+    <!-- Contact inline in hero -->
+    <div class="hero-contact">
+      <a class="hc-item" href="tel:0448234475">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        0448 234 475
+      </a>
+      <a class="hc-item" href="mailto:sid.lammata@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        sid.lammata@gmail.com
+      </a>
+      <a class="hc-item" href="https://linkedin.com/in/sidlammata" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        LinkedIn
+      </a>
+      <div class="hc-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Melbourne, Australia
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn-p" href="mailto:sid.lammata@gmail.com">Work with me</a>
+      <a class="btn-s" href="https://linkedin.com/in/sidlammata" target="_blank">LinkedIn ↗</a>
+      <a class="btn-s" href="#" onclick="window.print();return false;">Download CV</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years of delivery &amp; transformation leadership</div>
+      </div>
+      <div class="stat-div"></div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Industries across B2B and B2C</div>
+      </div>
+      <div class="stat-div"></div>
+      <div>
+        <div class="stat-num">70%</div>
+        <div class="stat-label">Client re-engagement rate — personally requested back</div>
+      </div>
+      <div class="stat-div"></div>
+      <div>
+        <div class="stat-num">4 mo</div>
+        <div class="stat-label">Zero-to-market for an HRIS module, leading a team of 4</div>
+      </div>
+      <div class="stat-div"></div>
+      <div>
+        <div class="avail"><span class="avail-dot"></span>Open to new engagements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="s-block">
+      <div class="s-head">Certifications</div>
+      <div class="cert-item">
+        <div class="cert-logo cert-logo-aws">
+          <svg width="28" height="17" viewBox="0 0 72 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.3 16.4c0 .8.1 1.4.2 1.8.2.4.4.9.8 1.4.1.2.2.4.2.5 0 .2-.1.4-.4.7l-1.3.9c-.2.1-.4.2-.5.2-.2 0-.4-.1-.6-.3-.3-.3-.5-.6-.7-1-.2-.4-.4-.8-.6-1.3-1.5 1.8-3.4 2.7-5.6 2.7-1.6 0-2.9-.5-3.8-1.4-.9-.9-1.4-2.2-1.4-3.7 0-1.6.6-2.9 1.7-3.9 1.1-.9 2.6-1.4 4.5-1.4.6 0 1.3.1 2 .2.7.1 1.4.3 2.1.5v-1.4c0-1.4-.3-2.4-.9-3-.6-.6-1.6-.9-3-.9-.6 0-1.3.1-2 .3-.7.2-1.3.4-2 .7-.3.1-.5.2-.6.2-.2 0-.3-.1-.3-.4v-.9c0-.2 0-.4.1-.5.1-.1.3-.2.5-.3.7-.4 1.5-.7 2.4-.9.9-.3 1.9-.4 2.9-.4 2.2 0 3.8.5 4.9 1.5 1 1 1.6 2.5 1.6 4.5v5.9zm-7.7 2.9c.6 0 1.3-.1 2-.4.7-.3 1.3-.7 1.8-1.4.3-.4.5-.8.6-1.3.1-.5.2-1 .2-1.7v-.8c-.6-.1-1.1-.2-1.7-.3-.6-.1-1.1-.1-1.7-.1-1.2 0-2.1.2-2.7.7-.6.5-.9 1.2-.9 2.1 0 .8.2 1.5.7 1.9.4.4 1 .6 1.7.6zm14.5 2c-.2 0-.4-.1-.5-.2-.1-.1-.2-.4-.3-.7l-3.5-11.5c-.1-.3-.2-.6-.2-.7 0-.3.1-.4.4-.4h1.5c.3 0 .4.1.5.2.1.1.2.4.3.7l2.5 9.8 2.3-9.8c.1-.3.2-.5.3-.7.1-.1.3-.2.6-.2h1.2c.3 0 .4.1.6.2.1.1.2.4.3.7l2.3 9.9 2.6-9.9c.1-.3.2-.5.3-.7.1-.1.3-.2.5-.2h1.4c.3 0 .4.1.4.4 0 .1 0 .2-.1.4 0 .1-.1.3-.2.6L33.5 20.6c-.1.3-.2.5-.3.7-.1.1-.3.2-.5.2H31c-.3 0-.4-.1-.6-.2-.1-.1-.2-.4-.3-.7l-2.3-9.5-2.3 9.5c-.1.3-.2.5-.3.7-.1.1-.3.2-.6.2h-1.5zm22.8.5c-.9 0-1.9-.1-2.8-.4-.9-.2-1.6-.5-2.1-.8-.3-.2-.5-.4-.5-.6v-1c0-.3.1-.4.3-.4.1 0 .2 0 .3.1l.4.2c.6.3 1.2.5 1.9.7.7.2 1.4.2 2.1.2 1.1 0 2-.2 2.6-.6.6-.4.9-.9.9-1.6 0-.5-.1-.9-.4-1.2-.3-.3-.9-.6-1.7-.9l-2.4-.7c-1.2-.4-2.1-.9-2.7-1.7-.6-.7-.9-1.6-.9-2.5 0-.7.2-1.4.5-1.9.3-.6.8-1 1.3-1.4.5-.4 1.1-.6 1.8-.8.7-.2 1.4-.3 2.1-.3.4 0 .8 0 1.2.1.4.1.7.1 1.1.2.3.1.6.2.9.3.3.1.5.2.6.3.2.1.3.2.4.3.1.1.1.3.1.5v.9c0 .3-.1.4-.3.4-.1 0-.3-.1-.7-.3-.9-.4-2-.6-3.1-.6-1 0-1.8.2-2.4.5-.6.4-.9.9-.9 1.6 0 .5.2.9.5 1.2.3.3 1 .6 1.9.9l2.3.7c1.2.4 2.1.9 2.6 1.6.5.7.8 1.5.8 2.4 0 .7-.2 1.4-.5 2-.3.6-.7 1.1-1.3 1.5-.5.4-1.2.7-1.9.9-.8.3-1.6.4-2.5.4z" fill="white"/>
+            <path d="M47.9 31.4c-5.8 4.3-14.3 6.6-21.6 6.6-10.2 0-19.4-3.8-26.4-10 -.5-.5-.1-1.1.6-.8 7.5 4.4 16.8 7 26.4 7 6.5 0 13.6-1.3 20.1-4.1 1-.4 1.8.6.9 1.3zm2.5-2.8c-.7-.9-4.7-.4-6.5-.2-.5.1-.6-.4-.1-.7 3.2-2.2 8.4-1.6 9-.8.6.7-.2 5.9-3.1 8.4-.5.4-.9.2-.7-.3.6-1.6 2.1-5.5 1.4-6.4z" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cert-name">Certified AI Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services (AWS)</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo cert-logo-safe">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="9" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">SAFe</text>
+          </svg>
+        </div>
+        <div>
+          <div class="cert-name">SAFe Agilist</div>
+          <div class="cert-issuer">Scaled Agile, Inc.</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo cert-logo-scrum">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">CSM</text>
+          </svg>
+        </div>
+        <div>
+          <div class="cert-name">Certified Scrum Master</div>
+          <div class="cert-issuer">Scrum Alliance</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo cert-logo-scrum">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="7.5" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">CSPO</text>
+          </svg>
+        </div>
+        <div>
+          <div class="cert-name">Certified Scrum Product Owner</div>
+          <div class="cert-issuer">Scrum Alliance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-block">
+      <div class="s-head">Education</div>
+      <div class="edu-entry">
+        <div class="edu-deg">B.Tech — Electrical &amp; Electronics Engineering</div>
+        <div class="edu-school">India</div>
+        <div class="edu-note">Technical systems foundation underlying a 20-year strategy career</div>
+      </div>
+      <div class="edu-entry" style="margin-top:10px">
+        <div class="edu-deg">PG Diploma — Event Management</div>
+        <div class="edu-school">EMDI Institute of Media &amp; Communication, Bangalore</div>
+        <div class="edu-note">Communication, stakeholder experience &amp; high-pressure logistics</div>
+      </div>
+    </div>
+
+    <div class="s-block">
+      <div class="s-head">Industries</div>
+      <div class="ind-row">Superannuation &amp; Insurance</div>
+      <div class="ind-row">HR Technology (HRIS &amp; Payroll)</div>
+      <div class="ind-row">Utilities &amp; Energy</div>
+      <div class="ind-row">Higher Education</div>
+      <div class="ind-row">Fintech &amp; Payment Gateways</div>
+      <div class="ind-row">Online Wagering</div>
+      <div class="ind-row">Marketplaces &amp; Directories</div>
+      <div class="ind-row">Cloud &amp; Enterprise SaaS</div>
+      <div class="ind-row">Travel &amp; Immigration Tech</div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- SKILLS TAGS -->
+    <section class="section fade d1" id="skills">
+      <div class="sec-header"><div class="sec-title">Skills &amp; Focus Areas</div><div class="sec-rule"></div></div>
+      <div class="skill-tags">
+        <span class="sk-tag sk-tag-accent">AI Strategy &amp; Governance</span>
+        <span class="sk-tag sk-tag-accent">AI Adoption &amp; Enablement</span>
+        <span class="sk-tag sk-tag-accent">Use-Case Discovery</span>
+        <span class="sk-tag sk-tag-warm">Product Leadership</span>
+        <span class="sk-tag sk-tag-warm">Strategy Execution</span>
+        <span class="sk-tag sk-tag-warm">Roadmap Prioritisation</span>
+        <span class="sk-tag">Agile Coaching</span>
+        <span class="sk-tag">Scrum · Kanban · SAFe</span>
+        <span class="sk-tag">Operating Model Design</span>
+        <span class="sk-tag">Stakeholder Management</span>
+        <span class="sk-tag">Cloud Migration</span>
+        <span class="sk-tag">Platform Modernisation</span>
+        <span class="sk-tag">Rapid Prototyping</span>
+        <span class="sk-tag">AWS Bedrock · Copilot Studio</span>
+        <span class="sk-tag">Delivery Metrics &amp; OKRs</span>
+        <span class="sk-tag">Business Analysis</span>
+        <span class="sk-tag">BPMN · UML</span>
+        <span class="sk-tag">Distributed Team Leadership</span>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section fade d2" id="capabilities">
+      <div class="sec-header"><div class="sec-title">Core Capabilities</div><div class="sec-rule"></div></div>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-tag-badge">AI Transformation</div>
+          <div class="cap-title">AI Strategy &amp; Responsible Adoption</div>
+          <div class="cap-text">Structure AI opportunity discovery, build governance frameworks, and sequence initiatives from business case to production — with guardrails that enable pace without sacrificing trust.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-tag-badge">Execution</div>
+          <div class="cap-title">Strategy Execution &amp; Roadmap Leadership</div>
+          <div class="cap-text">Turn executive intent into cross-functional roadmaps with clear ownership, sequenced priorities, and the operating rhythms that keep complex programmes on track.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-tag-badge">Operating Model</div>
+          <div class="cap-title">Capability Uplift &amp; Ways of Working</div>
+          <div class="cap-text">Design playbooks and coaching infrastructure that let organisations scale AI and delivery capability without losing control of quality, governance, or culture.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-tag-badge">Delivery</div>
+          <div class="cap-title">Product &amp; Agile Delivery Leadership</div>
+          <div class="cap-text">From discovery through launch — roadmap shaping, flow optimisation, throughput improvement, and cross-team dependency management at scale.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-tag-badge">Transformation</div>
+          <div class="cap-title">Platform Modernisation &amp; Cloud Migration</div>
+          <div class="cap-text">Lead complex migrations — mainframe to modern, on-premises to cloud — translating technical programmes into business outcomes stakeholders understand and trust.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-tag-badge">Insight</div>
+          <div class="cap-title">Metrics, Transparency &amp; Governance</div>
+          <div class="cap-text">Delivery and adoption metrics that steer real decisions. Forums that connect delivery progress to commercial outcomes, risks, and leadership expectations.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section fade d3" id="experience">
+      <div class="sec-header"><div class="sec-title">Career History</div><div class="sec-rule"></div></div>
+
+      <!-- ACT III -->
+      <div class="era-group">
+        <div class="act-banner">
+          <div class="act-num act-num-3">III</div>
+          <div class="act-body">
+            <div class="act-label">Act Three · 2019 – Present</div>
+            <div class="act-title">AI-Era Transformation &amp; Strategy</div>
+            <div class="act-period">Australia — Senior Consultant, Founder, AI Adoption Lead</div>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-meta">
+            <div class="exp-date">May 2023<br>— Present</div>
+            <div class="exp-company">Arinco <div class="exp-co-note">(prev. D6 Consulting)</div></div>
+          </div>
+          <div>
+            <div class="exp-role">Senior Business Consultant — AI Adoption</div>
+            <ul class="exp-points">
+              <li>Led structured AI use-case discovery workshops — mapping end-to-end processes, surfacing pain points, and translating them into a prioritised pipeline scored on value, strategic fit and feasibility.</li>
+              <li>Managed delivery of an AI-powered data transformation solution on AWS Bedrock (Kiro + AWS Transform) for a financial services client — owning product and programme from requirements to rollout.</li>
+              <li>Directed end-to-end cloud migration (on-premises to AWS) at Insignia Financial, maintaining stakeholder alignment and delivery integrity across a complex enterprise environment.</li>
+              <li>Accelerated stakeholder buy-in by rapid-prototyping AI use cases in Copilot Studio — de-risking investment decisions before full build commitment.</li>
+            </ul>
+            <div class="exp-callout exp-callout-blue">
+              <div class="exp-callout-text">70% of clients across career have personally requested Sid for resumed or follow-on engagements — a consistent indicator of commercial trust and relationship capital.</div>
+            </div>
+            <div class="exp-tags">
+              <span class="exp-tag">AWS Bedrock</span><span class="exp-tag">Kiro</span><span class="exp-tag">Copilot Studio</span><span class="exp-tag">Cloud Migration</span><span class="exp-tag">AI Governance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-meta">
+            <div class="exp-date">Jun 2020<br>— Apr 2023</div>
+            <div class="exp-company">ELMO Software <div class="exp-co-note">ASX: ELO</div></div>
+          </div>
+          <div>
+            <div class="exp-role">Business Consultant — Product &amp; Delivery</div>
+            <ul class="exp-points">
+              <li>Simultaneously coached delivery across 4 Agile teams — improving throughput, reducing cycle times, and increasing feature velocity across the organisation.</li>
+              <li>Seconded as Product Manager: assembled and led a 4-person team that shipped the <strong>Experiences module</strong> from zero to market in 4 months — a journey-builder for critical employee lifecycle events (onboarding, role changes, offboarding) launched publicly on 2 August 2021.</li>
+              <li>Optimised Jira workflows, established cross-team dependency tracking, and built consistent reporting mechanisms giving leadership real-time delivery visibility.</li>
+              <li>Provided one-on-one Agile coaching to people leaders, building both mindset and practical delivery capability.</li>
+            </ul>
+            <div class="exp-callout exp-callout-warm">
+              <div class="exp-callout-text">Zero-to-market in 4 months, team of 4 — delivered while concurrently coaching 4 other delivery teams. A rare combination of individual product ownership and organisational scale.</div>
+            </div>
+            <div class="exp-tags">
+              <span class="exp-tag">Product Management</span><span class="exp-tag">Scrum</span><span class="exp-tag">Kanban</span><span class="exp-tag">HRIS SaaS</span><span class="exp-tag">ASX-Listed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-meta">
+            <div class="exp-date">Jan 2019<br>— Jan 2020</div>
+            <div class="exp-company">Everest Engineering <div class="exp-co-note">+ Easy2Visa (side)</div></div>
+          </div>
+          <div>
+            <div class="exp-role">Business Consultant — Agile Delivery</div>
+            <ul class="exp-points">
+              <li>Coached distributed Agile teams across Melbourne and India on Scrum, Kanban, and self-organisation for the Shell Card Online project.</li>
+              <li>Shaped and delivered a roster management mobile app within a 3-month timeline — stakeholder aligned, on scope, on schedule.</li>
+            </ul>
+            <div style="margin-top:12px">
+              <div class="startup-badge">⚡ Parallel Venture</div>
+              <div class="exp-role" style="font-size:13px;margin-bottom:6px">Easy2Visa — Founder &amp; Product Designer</div>
+              <ul class="exp-points">
+                <li>Conceived, designed, and launched Easy2Visa — a platform to simplify visa navigation for global citizens — while consulting full-time.</li>
+                <li>Designed the full product and brand solo; managed an outsourced development consultant to build and ship the platform.</li>
+                <li>Demonstrated end-to-end product ownership: from market insight through UX, brand identity, and go-to-market — with zero external funding.</li>
+              </ul>
+            </div>
+            <div class="exp-tags">
+              <span class="exp-tag">Shell</span><span class="exp-tag">Distributed Teams</span><span class="exp-tag">Mobile Delivery</span><span class="exp-tag">Startup Founder</span><span class="exp-tag">Product Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACT II -->
+      <div class="era-group">
+        <div class="act-banner">
+          <div class="act-num act-num-2">II</div>
+          <div class="act-body">
+            <div class="act-label">Act Two · 2014 – 2019</div>
+            <div class="act-title">Delivery Leadership at Scale</div>
+            <div class="act-period">Australia — Scrum Master, Product Owner across 5 organisations</div>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-meta">
+            <div class="exp-date">2014–2019</div>
+            <div class="exp-company">Factor5 · Bridge · Bupa · OUA · Betfair</div>
+          </div>
+          <div>
+            <div class="exp-role">Scrum Master &amp; Product Owner</div>
+            <ul class="exp-points">
+              <li>Built Tradie Match at Bridge — a self-evolving ML ranking algorithm that drove 40% continuous growth in tradie response and re-funded the startup.</li>
+              <li>Delivered UNSW digital handbook (Factor5), Bupa Customer Transformation MVP, BPoint payment gateway (OUA), and Betfair's offshore-onshore Agile model — all on time, all on scope.</li>
+              <li>Consistently ran distributed delivery across Australia, India, and Portugal — developing strong cross-cultural leadership and remote governance capability.</li>
+              <li>Built Betfair's offshore-onshore Agile framework from scratch, enabling project continuity across Melbourne and Porto for the first time.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="exp-tag">Machine Learning</span><span class="exp-tag">Insurance</span><span class="exp-tag">Higher Education</span><span class="exp-tag">Wagering</span><span class="exp-tag">Payments</span><span class="exp-tag">Distributed Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACT I -->
+      <div class="era-group">
+        <div class="act-banner">
+          <div class="act-num act-num-1">I</div>
+          <div class="act-body">
+            <div class="act-label">Act One · 2005 – 2014</div>
+            <div class="act-title">Technical &amp; Analytical Foundation</div>
+            <div class="act-period">India &amp; United Kingdom — BA, PO, Graduate Programmer</div>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-meta">
+            <div class="exp-date">Jan 2012<br>— Jan 2014</div>
+            <div class="exp-company">WorldPay · UK</div>
+          </div>
+          <div>
+            <div class="exp-role">Product Owner</div>
+            <ul class="exp-points">
+              <li>Led the first-ever joint implementation of V.me by Visa digital wallet across Europe — a platform-first delivery in a dispersed Agile model.</li>
+              <li>Delivered NextGen Hosted Payment Pages: platform and device agnostic, cross-geography, enterprise scale.</li>
+            </ul>
+            <div class="exp-tags"><span class="exp-tag">Payments</span><span class="exp-tag">Visa</span><span class="exp-tag">Europe</span><span class="exp-tag">Fintech</span></div>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-meta">
+            <div class="exp-date">2005–2012</div>
+            <div class="exp-company">Accenture · TCS · Cognizant · India</div>
+          </div>
+          <div>
+            <div class="exp-role">Business Analyst &amp; Graduate Programmer</div>
+            <ul class="exp-points">
+              <li>Process transformation at AEGON Insurance (Accenture); data migration at AVIVA Life and Superpartners (TCS); QA and BA foundations at UnitedHealth Group (Cognizant).</li>
+              <li>Built the analytical and systems thinking discipline — COBOL, BPMN, UML, data architecture — that underpins all subsequent strategy and delivery work.</li>
+            </ul>
+            <div class="exp-tags"><span class="exp-tag">Insurance</span><span class="exp-tag">Superannuation</span><span class="exp-tag">Data Migration</span><span class="exp-tag">BPMN/UML</span><span class="exp-tag">COBOL</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="section fade d3" id="media">
+      <div class="sec-header"><div class="sec-title">Portfolio &amp; Media</div><div class="sec-rule"></div></div>
+      <div class="media-grid">
+        <a class="media-card" href="https://linkedin.com/in/sidlammata" target="_blank">
+          <div class="media-thumb mt-blue">💼</div>
+          <div class="media-body">
+            <div class="media-type">LinkedIn · Profile &amp; Recommendations</div>
+            <div class="media-title">Full professional profile, endorsements &amp; client recommendations</div>
+            <div class="media-desc">The complete career narrative with peer and client testimonials.</div>
+            <div class="media-cta">View on LinkedIn</div>
+          </div>
+        </a>
+        <a class="media-card" href="https://lowcodesid.github.io/" target="_blank">
+          <div class="media-thumb mt-slate">⚙️</div>
+          <div class="media-body">
+            <div class="media-type">GitHub · Rapid Prototyping Portfolio</div>
+            <div class="media-title">AI-assisted &amp; low-code prototyping experiments</div>
+            <div class="media-desc">Working apps built fast — the same rapid prototyping method used to de-risk and validate AI initiatives in client engagements.</div>
+            <div class="media-cta">View portfolio</div>
+          </div>
+        </a>
+        <div class="media-card" style="cursor:default">
+          <div class="media-thumb mt-warm">🚀</div>
+          <div class="media-body">
+            <div class="media-type">Case Study · Product Delivery</div>
+            <div class="media-title">Zero to market in 4 months: ELMO Experiences module</div>
+            <div class="media-desc">Leading a 4-person team to ship an HRIS module from brief to live product while coaching 4 concurrent delivery teams. Launched Aug 2021.</div>
+            <div class="media-cta" style="color:var(--text-3)">Coming soon</div>
+          </div>
+        </div>
+        <div class="media-card" style="cursor:default">
+          <div class="media-thumb mt-green">🤖</div>
+          <div class="media-body">
+            <div class="media-type">Case Study · AI Transformation</div>
+            <div class="media-title">AI use-case discovery to production: Financial services</div>
+            <div class="media-desc">Structured discovery that surfaced and prioritised a pipeline of AI opportunities — with 3 moved to production within 6 months.</div>
+            <div class="media-cta" style="color:var(--text-3)">Coming soon</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section class="section fade d3">
+      <div class="sec-header"><div class="sec-title">Thinking &amp; Writing</div><div class="sec-rule"></div></div>
+      <div class="article-list">
+        <a class="article-item" href="https://www.linkedin.com/pulse/organisational-weather-can-you-predict-your-nextstorm-sid-lammata-twktc/" target="_blank">
+          <div class="art-num">01</div>
+          <div>
+            <div class="art-tag">Strategy &amp; Leadership · LinkedIn</div>
+            <div class="art-title">Organisational Weather — Can You Predict Your Next Storm?</div>
+            <div class="art-desc">A framework for reading the early signals of organisational disruption before they become crises — and why most leaders only notice the weather after it's already raining.</div>
+          </div>
+        </a>
+        <a class="article-item" href="https://www.linkedin.com/pulse/tourist-visas-demystified-sid-lammata/" target="_blank">
+          <div class="art-num">02</div>
+          <div>
+            <div class="art-tag">Travel &amp; Technology · LinkedIn</div>
+            <div class="art-title">Tourist Visas Demystified</div>
+            <div class="art-desc">Written during the Easy2Visa years — breaking down the complexity of tourist visa systems and the case for a simpler, technology-driven approach to border navigation.</div>
+          </div>
+        </a>
+        <a class="article-item" href="https://www.linkedin.com/pulse/evolution-travel-document-sid-lammata/" target="_blank">
+          <div class="art-num">03</div>
+          <div>
+            <div class="art-tag">Travel &amp; Technology · LinkedIn</div>
+            <div class="art-title">The Evolution of the Travel Document</div>
+            <div class="art-desc">A history of how travel documentation has evolved — from paper stamps to digital credentials — and what the next generation of borderless identity might look like.</div>
+          </div>
+        </a>
+        <a class="article-item" href="https://lowcodesid.github.io/" target="_blank">
+          <div class="art-num">04</div>
+          <div>
+            <div class="art-tag">Rapid Prototyping · GitHub</div>
+            <div class="art-title">AI vibe coding &amp; low-code experiments</div>
+            <div class="art-desc">A living log of working prototypes built with AI-assisted development — the same rapid prototyping method used in client discovery and validation engagements.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Sid Lammata</div>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/sidlammata" target="_blank">LinkedIn</a>
+    <a href="https://lowcodesid.github.io/" target="_blank">GitHub</a>
+    <a href="mailto:sid.lammata@gmail.com">Email</a>
+  </div>
+</footer>
+
+</body>
+</html>
