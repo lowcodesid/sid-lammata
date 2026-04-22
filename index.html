@@ -20,7 +20,7 @@
   --text-3:     #9C9488;
   --accent:     #1E52A4;
   --accent-bg:  #EBF0FA;
-  --accent-2:   #B56B2A;
+  --accent-2:   #7C3010;
   --accent-2bg: #FBF1E8;
   --green:      #1A6B2A;
   --green-bg:   #E8F5EB;
@@ -36,29 +36,14 @@ body {
   line-height: 1.65;
 }
 
-/* ─── NAV ─── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(248,246,242,0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 52px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 54px;
-}
-.nav-brand { font-size: 16px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.3px; }
-.nav-links { display: flex; align-items: center; gap: 24px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color .15s; }
-.nav-links a:hover { color: var(--text); }
-.nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 7px 16px; border-radius: 6px; font-size: 12px !important; font-weight: 600 !important; }
-.nav-cta:hover { opacity: .88; }
+/* nav removed */
 
 /* ─── HERO ─── */
 .hero {
   max-width: 1100px; margin: 0 auto;
-  padding: 60px 52px 52px;
-  display: grid; grid-template-columns: 1fr 320px;
-  gap: 56px; align-items: start;
+  padding: 64px 52px 52px;
+  display: grid; grid-template-columns: 1fr 210px;
+  gap: 48px; align-items: center;
 }
 
 .hero-eyebrow {
@@ -76,32 +61,39 @@ nav {
 .hero-name span { color: var(--accent); }
 
 .hero-positioning {
-  font-size: 17px; font-weight: 400; font-style: italic;
-  color: var(--text-2); line-height: 1.55;
+  font-size: 15px; font-weight: 500;
+  color: var(--text); line-height: 1.75;
   border-left: 3px solid var(--accent-2);
-  padding-left: 18px; margin-bottom: 22px; max-width: 520px;
+  padding-left: 18px; margin-bottom: 24px;
 }
+.hero-positioning strong { font-weight: 400; color: var(--text); }
 
 .hero-about {
   font-size: 14px; font-weight: 300;
   color: var(--text-2); line-height: 1.85;
-  max-width: 540px; margin-bottom: 26px;
+  margin-bottom: 26px;
 }
 .hero-about strong { font-weight: 600; color: var(--text); }
 
-/* Contact inline */
+/* Contact inline — one row */
 .hero-contact {
-  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;
+  display: flex; flex-wrap: nowrap; gap: 8px; margin-bottom: 0;
 }
 .hc-item {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 12.5px; font-weight: 500; color: var(--text-2);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; color: var(--text-2);
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 20px; padding: 5px 12px;
+  border-radius: 20px; padding: 4px 11px;
   text-decoration: none; transition: border-color .15s, color .15s;
+  white-space: nowrap;
 }
 .hc-item:hover { border-color: var(--accent); color: var(--accent); }
-.hc-item svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+.hc-item svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
+.hc-item-green {
+  background: var(--green-bg); color: var(--green);
+  border-color: rgba(26,107,42,.25); font-weight: 600;
+}
+.hc-item-green:hover { border-color: var(--green); color: var(--green); }
 
 .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn-p { font-size: 13px; font-weight: 600; background: var(--accent); color: var(--white); padding: 10px 22px; border-radius: 7px; text-decoration: none; }
@@ -109,23 +101,31 @@ nav {
 .btn-s { font-size: 13px; font-weight: 500; background: transparent; color: var(--text); padding: 10px 20px; border-radius: 7px; border: 1.5px solid var(--border); text-decoration: none; }
 .btn-s:hover { border-color: var(--text-3); }
 
-/* Hero right: stats */
-.stat-card {
+/* Hero right: stats — compact 3-stat panel */
+.stat-panel {
+  display: flex; flex-direction: column; gap: 0;
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 14px; padding: 26px;
-  display: flex; flex-direction: column; gap: 18px;
+  border-radius: 12px; overflow: hidden;
+  width: 200px;
 }
-.stat-num { font-size: 38px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 3px; }
-.stat-label { font-size: 12px; font-weight: 400; color: var(--text-2); }
-.stat-div { height: 1px; background: var(--border); }
+.stat-item {
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+}
+.stat-item:last-child { border-bottom: none; }
+.stat-num {
+  font-size: 26px; font-weight: 800; color: var(--accent);
+  line-height: 1; margin-bottom: 3px; letter-spacing: -0.5px;
+}
+.stat-label { font-size: 11.5px; font-weight: 400; color: var(--text-2); line-height: 1.4; }
+
 .avail {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--green-bg); color: var(--green);
-  font-size: 11px; font-weight: 600;
-  padding: 5px 11px; border-radius: 20px;
+  font-size: 11.5px; font-weight: 600;
+  padding: 6px 13px; border-radius: 20px;
   border: 1px solid rgba(26,107,42,.2);
 }
-.avail-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s ease infinite; }
+.avail-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s ease infinite; flex-shrink: 0; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
 
 /* ─── BODY ─── */
@@ -137,7 +137,7 @@ nav {
 }
 
 /* ─── SIDEBAR ─── */
-.sidebar { position: sticky; top: 70px; display: flex; flex-direction: column; gap: 22px; }
+.sidebar { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 22px; }
 
 .s-block {
   background: var(--white); border: 1px solid var(--border);
@@ -208,61 +208,105 @@ nav {
   border-color: rgba(181,107,42,.2);
 }
 
-/* Capabilities */
-.cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.cap-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 10px; padding: 16px 18px;
-  transition: border-color .2s, box-shadow .2s;
+/* Capabilities — editorial list */
+.cap-list { display: flex; flex-direction: column; }
+.cap-item {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 24px; padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
 }
-.cap-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(30,82,164,.06); }
-.cap-tag-badge {
-  display: inline-block; font-size: 9px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--accent); background: var(--accent-bg);
-  padding: 2px 8px; border-radius: 3px; margin-bottom: 8px;
+.cap-item:last-child { border-bottom: none; }
+.cap-item-left {}
+.cap-domain {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 5px;
 }
-.cap-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
-.cap-text { font-size: 12.5px; color: var(--text-2); line-height: 1.65; }
+.cap-title {
+  font-size: 14px; font-weight: 700; color: var(--text);
+  line-height: 1.3; letter-spacing: -0.1px;
+}
+.cap-item-right {}
+.cap-text {
+  font-size: 13px; font-weight: 300; color: var(--text-2);
+  line-height: 1.8;
+}
+.cap-text strong { font-weight: 600; color: var(--text); }
 
 /* ─── EXPERIENCE TIMELINE ─── */
 
-/* Act banner — the thing you see before each era */
-.act-banner {
-  display: flex; align-items: stretch;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 10px; overflow: hidden;
-  margin-bottom: 20px;
+/* Era box wraps the whole act including entries */
+.era-box {
+  border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  margin-bottom: 28px;
+  background: var(--white);
 }
-.act-num {
-  width: 56px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px; font-weight: 800; color: var(--white);
-  letter-spacing: -1px;
-}
-.act-num-1 { background: var(--text-3); }
-.act-num-2 { background: var(--accent-2); }
-.act-num-3 { background: var(--accent); }
-.act-body { padding: 12px 16px; }
-.act-label {
-  font-size: 9px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--text-3); margin-bottom: 2px;
-}
-.act-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.act-period { font-size: 11.5px; color: var(--text-3); }
 
-.era-group { margin-bottom: 36px; }
+/* Act header inside the era box */
+.act-header {
+  display: flex; align-items: stretch; gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.act-stripe { width: 0; }
+
+/* Three solid shades — lightest to darkest */
+.act-header-1 { background: #DDEAF9; }
+.act-header-2 { background: #4A7DBF; }
+.act-header-3 { background: #1E52A4; }
+
+.act-header-body {
+  flex: 1; padding: 14px 20px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.act-header-row1 { display: flex; align-items: baseline; gap: 14px; }
+
+.act-years {
+  font-size: 18px; font-weight: 800;
+  letter-spacing: -0.5px; line-height: 1;
+}
+/* Act I — light bg, coloured text */
+.act-header-1 .act-years { color: #1E52A4; }
+.act-header-1 .act-title-text { color: #18170F; }
+.act-header-1 .act-sub { color: #5A564E; }
+/* Acts II & III — dark bg, white text */
+.act-header-2 .act-years,
+.act-header-3 .act-years { color: #fff; }
+.act-header-2 .act-title-text,
+.act-header-3 .act-title-text { color: #fff; }
+.act-header-2 .act-sub,
+.act-header-3 .act-sub { color: rgba(255,255,255,.72); }
+
+.act-title-text { font-size: 14px; font-weight: 700; }
+.act-sub { font-size: 11.5px; font-weight: 400; }
+
+/* Entries inside era box */
+.era-entries { padding: 0 20px; }
 
 .exp-entry {
-  display: grid; grid-template-columns: 96px 1fr;
-  gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 110px 1fr;
+  gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border);
 }
 .exp-entry:last-child { border-bottom: none; }
 
-.exp-meta { padding-top: 2px; }
-.exp-date { font-size: 12px; color: var(--text-3); line-height: 1.5; margin-bottom: 4px; }
-.exp-company { font-size: 12px; font-weight: 700; color: var(--accent); line-height: 1.4; }
-.exp-co-note { font-size: 11px; color: var(--text-3); font-weight: 400; }
+.exp-meta { padding-top: 3px; display: flex; flex-direction: column; gap: 5px; }
+.exp-date {
+  font-size: 13px; font-weight: 400; color: var(--text-3);
+  line-height: 1.4; margin-bottom: 2px;
+}
+
+/* Company pill — highlighted */
+.exp-company-pill {
+  display: inline-flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--border-2);
+  border-radius: 7px; padding: 5px 9px;
+}
+.exp-company-name {
+  font-size: 12px; font-weight: 700; color: var(--text);
+  line-height: 1.3;
+}
+.exp-co-note { font-size: 10.5px; color: var(--text-3); font-weight: 400; margin-top: 1px; }
 
 .exp-role { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -.2px; }
 .exp-points { list-style: none; display: flex; flex-direction: column; gap: 4px; }
@@ -288,6 +332,10 @@ nav {
   background: var(--surface); color: var(--text-2);
   padding: 3px 9px; border-radius: 20px; border: 1px solid var(--border);
 }
+/* Frequency-coded: burnt dark orange — darker = used more across career */
+.etag-hi  { background: #7C3010; color: #fff; border-color: #7C3010; font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+.etag-mid { background: #BF5A28; color: #fff; border-color: #BF5A28; font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
+.etag-lo  { background: #FAE6D8; color: #7C3010; border-color: #F5C4A0; font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
 
 /* Startup badge */
 .startup-badge {
@@ -299,27 +347,22 @@ nav {
 }
 
 /* Media / Portfolio */
-.media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.media-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .media-card {
   background: var(--white); border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
-  text-decoration: none; color: inherit; display: block;
+  text-decoration: none; color: inherit; display: flex; flex-direction: column;
   transition: box-shadow .2s, border-color .2s;
 }
 .media-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); border-color: var(--text-3); }
-.media-thumb {
-  height: 88px; display: flex; align-items: center; justify-content: center; font-size: 32px;
-}
-.mt-blue  { background: linear-gradient(135deg,#EBF0FA,#D6E4F7); }
-.mt-warm  { background: linear-gradient(135deg,#FBF1E8,#F5DFC4); }
-.mt-slate { background: linear-gradient(135deg,#F0EEF0,#E4E0E8); }
-.mt-green { background: linear-gradient(135deg,#E8F5EB,#D4EDD8); }
-.media-body { padding: 14px 16px; }
-.media-type { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
-.media-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
-.media-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
-.media-cta { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: var(--accent); margin-top: 9px; text-decoration: none; }
-.media-card:hover .media-cta::after { content:'→'; margin-left: 3px; }
+.media-card-top { padding: 16px 16px 0; }
+.media-emoji { font-size: 22px; margin-bottom: 8px; display: block; }
+.media-body { padding: 0 16px 16px; flex: 1; display: flex; flex-direction: column; }
+.media-type { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
+.media-title { font-size: 12.5px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.35; }
+.media-desc { font-size: 11.5px; color: var(--text-2); line-height: 1.55; flex: 1; }
+.media-cta { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--accent); margin-top: 10px; text-decoration: none; }
+.media-card:hover .media-cta::after { content:'→'; margin-left: 2px; }
 
 /* Articles */
 .article-list { display: flex; flex-direction: column; gap: 10px; }
@@ -358,36 +401,27 @@ footer {
   .hero-name { font-size: 44px; }
   .page-body { grid-template-columns: 1fr; }
   .sidebar { position: static; }
-  .cap-grid, .media-grid { grid-template-columns: 1fr; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .media-grid { grid-template-columns: 1fr 1fr; }
   .exp-entry { grid-template-columns: 80px 1fr; gap: 12px; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#">Sid Lammata</a>
-  <div class="nav-links">
-    <a href="#skills">Expertise</a>
-    <a href="#experience">Career</a>
-    <a href="#media">Portfolio</a>
-    <a class="nav-cta" href="mailto:sid.lammata@gmail.com">Get in touch</a>
-  </div>
-</nav>
-
 <!-- HERO -->
 <section class="hero fade">
   <div>
     <div class="hero-eyebrow">AI Strategy · Transformation · Delivery Leadership</div>
     <h1 class="hero-name">Sid<br><span>Lammata</span></h1>
-    <p class="hero-positioning">I help growth-oriented organisations close the gap between AI ambition and executed reality — quickly, responsibly, and without the chaos that usually comes with moving fast.</p>
-    <p class="hero-about">
-      With <strong>20+ years across 10+ industries</strong>, I'm typically brought in when there's a gap between what leadership wants to achieve and what the organisation is actually capable of delivering. My background spans electrical engineering in India, enterprise transformation in the UK, and progressively senior AI strategy and delivery roles across Australia — giving me <strong>genuine technical fluency combined with board-level communication</strong> that most consultants can't offer.
-    </p>
+    <p class="hero-positioning">I help growth-oriented organisations close the gap between AI ambition and executed reality — bringing the <strong>strategic clarity, AI-first thinking, and hands-on delivery discipline</strong> to turn intent into outcomes. With <strong>20+ years across 10+ industries</strong>, I'm typically the person called in when leadership ambition and organisational capability aren't moving at the same speed — and I've spent two decades making sure they do.</p>
 
     <!-- Contact inline in hero -->
     <div class="hero-contact">
+      <div class="hc-item hc-item-green">
+        <span class="avail-dot"></span>
+        Open to new engagements
+      </div>
       <a class="hc-item" href="tel:0448234475">
         <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
         0448 234 475
@@ -405,38 +439,21 @@ footer {
         Melbourne, Australia
       </div>
     </div>
-
-    <div class="hero-actions">
-      <a class="btn-p" href="mailto:sid.lammata@gmail.com">Work with me</a>
-      <a class="btn-s" href="https://linkedin.com/in/sidlammata" target="_blank">LinkedIn ↗</a>
-      <a class="btn-s" href="#" onclick="window.print();return false;">Download CV</a>
-    </div>
   </div>
 
   <div>
-    <div class="stat-card">
-      <div>
+    <div class="stat-panel">
+      <div class="stat-item">
         <div class="stat-num">20+</div>
-        <div class="stat-label">Years of delivery &amp; transformation leadership</div>
+        <div class="stat-label">Years of transformation leadership</div>
       </div>
-      <div class="stat-div"></div>
-      <div>
+      <div class="stat-item">
         <div class="stat-num">10+</div>
         <div class="stat-label">Industries across B2B and B2C</div>
       </div>
-      <div class="stat-div"></div>
-      <div>
+      <div class="stat-item">
         <div class="stat-num">70%</div>
-        <div class="stat-label">Client re-engagement rate — personally requested back</div>
-      </div>
-      <div class="stat-div"></div>
-      <div>
-        <div class="stat-num">4 mo</div>
-        <div class="stat-label">Zero-to-market for an HRIS module, leading a team of 4</div>
-      </div>
-      <div class="stat-div"></div>
-      <div>
-        <div class="avail"><span class="avail-dot"></span>Open to new engagements</div>
+        <div class="stat-label">Clients who personally requested Sid back</div>
       </div>
     </div>
   </div>
@@ -533,61 +550,92 @@ footer {
     <section class="section fade d1" id="skills">
       <div class="sec-header"><div class="sec-title">Skills &amp; Focus Areas</div><div class="sec-rule"></div></div>
       <div class="skill-tags">
-        <span class="sk-tag sk-tag-accent">AI Strategy &amp; Governance</span>
-        <span class="sk-tag sk-tag-accent">AI Adoption &amp; Enablement</span>
-        <span class="sk-tag sk-tag-accent">Use-Case Discovery</span>
-        <span class="sk-tag sk-tag-warm">Product Leadership</span>
-        <span class="sk-tag sk-tag-warm">Strategy Execution</span>
-        <span class="sk-tag sk-tag-warm">Roadmap Prioritisation</span>
-        <span class="sk-tag">Agile Coaching</span>
-        <span class="sk-tag">Scrum · Kanban · SAFe</span>
+        <span class="sk-tag">AI Strategy &amp; Governance</span>
+        <span class="sk-tag">AI Adoption &amp; Enablement</span>
+        <span class="sk-tag">Use-Case Discovery</span>
+        <span class="sk-tag">AWS Bedrock · Copilot Studio</span>
+        <span class="sk-tag">Rapid Prototyping</span>
+        <span class="sk-tag">Strategy Execution</span>
+        <span class="sk-tag">Roadmap Prioritisation</span>
         <span class="sk-tag">Operating Model Design</span>
         <span class="sk-tag">Stakeholder Management</span>
+        <span class="sk-tag">Agile Coaching</span>
+        <span class="sk-tag">Product Leadership</span>
+        <span class="sk-tag">Scrum · Kanban · SAFe</span>
+        <span class="sk-tag">Distributed Team Leadership</span>
         <span class="sk-tag">Cloud Migration</span>
         <span class="sk-tag">Platform Modernisation</span>
-        <span class="sk-tag">Rapid Prototyping</span>
-        <span class="sk-tag">AWS Bedrock · Copilot Studio</span>
         <span class="sk-tag">Delivery Metrics &amp; OKRs</span>
         <span class="sk-tag">Business Analysis</span>
         <span class="sk-tag">BPMN · UML</span>
-        <span class="sk-tag">Distributed Team Leadership</span>
       </div>
     </section>
 
     <!-- CAPABILITIES -->
     <section class="section fade d2" id="capabilities">
       <div class="sec-header"><div class="sec-title">Core Capabilities</div><div class="sec-rule"></div></div>
-      <div class="cap-grid">
-        <div class="cap-card">
-          <div class="cap-tag-badge">AI Transformation</div>
-          <div class="cap-title">AI Strategy &amp; Responsible Adoption</div>
-          <div class="cap-text">Structure AI opportunity discovery, build governance frameworks, and sequence initiatives from business case to production — with guardrails that enable pace without sacrificing trust.</div>
+      <div class="cap-list">
+
+        <div class="cap-item">
+          <div class="cap-item-left">
+            <div class="cap-domain">AI Strategy</div>
+            <div class="cap-title">AI Adoption &amp; Governance</div>
+          </div>
+          <div class="cap-item-right">
+            <p class="cap-text">Structured discovery to surface and prioritise AI opportunities, paired with governance frameworks, human-in-the-loop controls, and responsible AI guardrails — so organisations move fast without making decisions they'll regret.</p>
+          </div>
         </div>
-        <div class="cap-card">
-          <div class="cap-tag-badge">Execution</div>
-          <div class="cap-title">Strategy Execution &amp; Roadmap Leadership</div>
-          <div class="cap-text">Turn executive intent into cross-functional roadmaps with clear ownership, sequenced priorities, and the operating rhythms that keep complex programmes on track.</div>
+
+        <div class="cap-item">
+          <div class="cap-item-left">
+            <div class="cap-domain">Execution</div>
+            <div class="cap-title">Strategy Execution &amp; Roadmap Leadership</div>
+          </div>
+          <div class="cap-item-right">
+            <p class="cap-text">Translating executive intent into cross-functional roadmaps with named owners, sequenced priorities, and operating cadences that hold — across cloud migrations, product strategy, and enterprise transformation programmes.</p>
+          </div>
         </div>
-        <div class="cap-card">
-          <div class="cap-tag-badge">Operating Model</div>
-          <div class="cap-title">Capability Uplift &amp; Ways of Working</div>
-          <div class="cap-text">Design playbooks and coaching infrastructure that let organisations scale AI and delivery capability without losing control of quality, governance, or culture.</div>
+
+        <div class="cap-item">
+          <div class="cap-item-left">
+            <div class="cap-domain">Product</div>
+            <div class="cap-title">Product Leadership &amp; Zero-to-Market Delivery</div>
+          </div>
+          <div class="cap-item-right">
+            <p class="cap-text">End-to-end product ownership from brief to live — including shipping ELMO's Experiences module in 4 months with a team of 4, while simultaneously coaching delivery across four other Agile teams.</p>
+          </div>
         </div>
-        <div class="cap-card">
-          <div class="cap-tag-badge">Delivery</div>
-          <div class="cap-title">Product &amp; Agile Delivery Leadership</div>
-          <div class="cap-text">From discovery through launch — roadmap shaping, flow optimisation, throughput improvement, and cross-team dependency management at scale.</div>
+
+        <div class="cap-item">
+          <div class="cap-item-left">
+            <div class="cap-domain">Delivery</div>
+            <div class="cap-title">Agile Coaching &amp; Delivery at Scale</div>
+          </div>
+          <div class="cap-item-right">
+            <p class="cap-text">Fifteen years coaching Scrum, Kanban, and SAFe across distributed teams in Australia, India, UK and Portugal — improving throughput by removing systemic blockers, not adding process.</p>
+          </div>
         </div>
-        <div class="cap-card">
-          <div class="cap-tag-badge">Transformation</div>
-          <div class="cap-title">Platform Modernisation &amp; Cloud Migration</div>
-          <div class="cap-text">Lead complex migrations — mainframe to modern, on-premises to cloud — translating technical programmes into business outcomes stakeholders understand and trust.</div>
+
+        <div class="cap-item">
+          <div class="cap-item-left">
+            <div class="cap-domain">Operating Model</div>
+            <div class="cap-title">Capability Uplift &amp; Ways of Working</div>
+          </div>
+          <div class="cap-item-right">
+            <p class="cap-text">Designing the playbooks, rhythms, and governance forums that let organisations scale without losing control — building AI literacy, Agile maturity, and delivery visibility that teams sustain independently.</p>
+          </div>
         </div>
-        <div class="cap-card">
-          <div class="cap-tag-badge">Insight</div>
-          <div class="cap-title">Metrics, Transparency &amp; Governance</div>
-          <div class="cap-text">Delivery and adoption metrics that steer real decisions. Forums that connect delivery progress to commercial outcomes, risks, and leadership expectations.</div>
+
+        <div class="cap-item">
+          <div class="cap-item-left">
+            <div class="cap-domain">Transformation</div>
+            <div class="cap-title">Platform Modernisation &amp; Cloud Migration</div>
+          </div>
+          <div class="cap-item-right">
+            <p class="cap-text">Leading complex migrations — mainframe to ASP.net at Superpartners, on-premises to AWS at Insignia Financial, and the first V.me by Visa wallet implementation across Europe — keeping business outcomes at the centre of every technical decision.</p>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -596,20 +644,24 @@ footer {
       <div class="sec-header"><div class="sec-title">Career History</div><div class="sec-rule"></div></div>
 
       <!-- ACT III -->
-      <div class="era-group">
-        <div class="act-banner">
-          <div class="act-num act-num-3">III</div>
-          <div class="act-body">
-            <div class="act-label">Act Three · 2019 – Present</div>
-            <div class="act-title">AI-Era Transformation &amp; Strategy</div>
-            <div class="act-period">Australia — Senior Consultant, Founder, AI Adoption Lead</div>
+      <div class="era-box">
+        <div class="act-header act-header-3">
+          <div class="act-header-body">
+            <div class="act-header-row1">
+              <span class="act-years">2019 – Present</span>
+              <span class="act-title-text">AI-Era Transformation &amp; Strategy</span>
+            </div>
+            <span class="act-sub">Australia · Senior Consultant · Founder · AI Adoption Lead</span>
           </div>
         </div>
+        <div class="era-entries">
 
         <div class="exp-entry">
           <div class="exp-meta">
-            <div class="exp-date">May 2023<br>— Present</div>
-            <div class="exp-company">Arinco <div class="exp-co-note">(prev. D6 Consulting)</div></div>
+            <div class="exp-date">May 2023 – Present</div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Arinco</span>
+            </div>
           </div>
           <div>
             <div class="exp-role">Senior Business Consultant — AI Adoption</div>
@@ -623,15 +675,21 @@ footer {
               <div class="exp-callout-text">70% of clients across career have personally requested Sid for resumed or follow-on engagements — a consistent indicator of commercial trust and relationship capital.</div>
             </div>
             <div class="exp-tags">
-              <span class="exp-tag">AWS Bedrock</span><span class="exp-tag">Kiro</span><span class="exp-tag">Copilot Studio</span><span class="exp-tag">Cloud Migration</span><span class="exp-tag">AI Governance</span>
+              <span class="etag-hi">AI Strategy &amp; Governance</span>
+              <span class="etag-hi">Stakeholder Management</span>
+              <span class="etag-mid">Use-Case Discovery</span>
+              <span class="etag-mid">Cloud Migration</span>
+              <span class="etag-lo">AWS Bedrock · Copilot Studio</span>
             </div>
           </div>
         </div>
 
         <div class="exp-entry">
           <div class="exp-meta">
-            <div class="exp-date">Jun 2020<br>— Apr 2023</div>
-            <div class="exp-company">ELMO Software <div class="exp-co-note">ASX: ELO</div></div>
+            <div class="exp-date">Jun 2020 – Apr 2023</div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">ELMO Software</span>
+            </div>
           </div>
           <div>
             <div class="exp-role">Business Consultant — Product &amp; Delivery</div>
@@ -645,15 +703,24 @@ footer {
               <div class="exp-callout-text">Zero-to-market in 4 months, team of 4 — delivered while concurrently coaching 4 other delivery teams. A rare combination of individual product ownership and organisational scale.</div>
             </div>
             <div class="exp-tags">
-              <span class="exp-tag">Product Management</span><span class="exp-tag">Scrum</span><span class="exp-tag">Kanban</span><span class="exp-tag">HRIS SaaS</span><span class="exp-tag">ASX-Listed</span>
+              <span class="etag-hi">Agile Coaching</span>
+              <span class="etag-hi">Product Leadership</span>
+              <span class="etag-hi">Scrum · Kanban</span>
+              <span class="etag-mid">Operating Model Design</span>
+              <span class="etag-lo">Delivery Metrics &amp; OKRs</span>
             </div>
           </div>
         </div>
 
         <div class="exp-entry">
           <div class="exp-meta">
-            <div class="exp-date">Jan 2019<br>— Jan 2020</div>
-            <div class="exp-company">Everest Engineering <div class="exp-co-note">+ Easy2Visa (side)</div></div>
+            <div class="exp-date">Jan 2019 – Jan 2020</div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Everest Engineering</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Easy2Visa</span>
+            </div>
           </div>
           <div>
             <div class="exp-role">Business Consultant — Agile Delivery</div>
@@ -663,7 +730,7 @@ footer {
             </ul>
             <div style="margin-top:12px">
               <div class="startup-badge">⚡ Parallel Venture</div>
-              <div class="exp-role" style="font-size:13px;margin-bottom:6px">Easy2Visa — Founder &amp; Product Designer</div>
+              <div class="exp-role">Easy2Visa — Founder &amp; Product Designer</div>
               <ul class="exp-points">
                 <li>Conceived, designed, and launched Easy2Visa — a platform to simplify visa navigation for global citizens — while consulting full-time.</li>
                 <li>Designed the full product and brand solo; managed an outsourced development consultant to build and ship the platform.</li>
@@ -671,27 +738,49 @@ footer {
               </ul>
             </div>
             <div class="exp-tags">
-              <span class="exp-tag">Shell</span><span class="exp-tag">Distributed Teams</span><span class="exp-tag">Mobile Delivery</span><span class="exp-tag">Startup Founder</span><span class="exp-tag">Product Design</span>
+              <span class="etag-hi">Agile Coaching</span>
+              <span class="etag-hi">Scrum · Kanban</span>
+              <span class="etag-mid">Distributed Team Leadership</span>
+              <span class="etag-mid">Product Leadership</span>
+              <span class="etag-lo">Rapid Prototyping</span>
             </div>
           </div>
         </div>
-      </div>
+
+        </div><!-- /era-entries -->
+      </div><!-- /era-box -->
 
       <!-- ACT II -->
-      <div class="era-group">
-        <div class="act-banner">
-          <div class="act-num act-num-2">II</div>
-          <div class="act-body">
-            <div class="act-label">Act Two · 2014 – 2019</div>
-            <div class="act-title">Delivery Leadership at Scale</div>
-            <div class="act-period">Australia — Scrum Master, Product Owner across 5 organisations</div>
+      <div class="era-box">
+        <div class="act-header act-header-2">
+          <div class="act-header-body">
+            <div class="act-header-row1">
+              <span class="act-years">2014 – 2019</span>
+              <span class="act-title-text">Delivery Leadership at Scale</span>
+            </div>
+            <span class="act-sub">Australia · Scrum Master &amp; Product Owner across 5 organisations</span>
           </div>
         </div>
+        <div class="era-entries">
 
         <div class="exp-entry">
           <div class="exp-meta">
-            <div class="exp-date">2014–2019</div>
-            <div class="exp-company">Factor5 · Bridge · Bupa · OUA · Betfair</div>
+            <div class="exp-date">Jan 2014 – Dec 2019</div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Factor5</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Bridge</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Bupa</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">OUA</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Betfair</span>
+            </div>
           </div>
           <div>
             <div class="exp-role">Scrum Master &amp; Product Owner</div>
@@ -702,27 +791,37 @@ footer {
               <li>Built Betfair's offshore-onshore Agile framework from scratch, enabling project continuity across Melbourne and Porto for the first time.</li>
             </ul>
             <div class="exp-tags">
-              <span class="exp-tag">Machine Learning</span><span class="exp-tag">Insurance</span><span class="exp-tag">Higher Education</span><span class="exp-tag">Wagering</span><span class="exp-tag">Payments</span><span class="exp-tag">Distributed Delivery</span>
+              <span class="etag-hi">Scrum · Kanban · SAFe</span>
+              <span class="etag-hi">Agile Coaching</span>
+              <span class="etag-hi">Stakeholder Management</span>
+              <span class="etag-mid">Distributed Team Leadership</span>
+              <span class="etag-lo">Machine Learning</span>
             </div>
           </div>
         </div>
-      </div>
+
+        </div><!-- /era-entries -->
+      </div><!-- /era-box -->
 
       <!-- ACT I -->
-      <div class="era-group">
-        <div class="act-banner">
-          <div class="act-num act-num-1">I</div>
-          <div class="act-body">
-            <div class="act-label">Act One · 2005 – 2014</div>
-            <div class="act-title">Technical &amp; Analytical Foundation</div>
-            <div class="act-period">India &amp; United Kingdom — BA, PO, Graduate Programmer</div>
+      <div class="era-box">
+        <div class="act-header act-header-1">
+          <div class="act-header-body">
+            <div class="act-header-row1">
+              <span class="act-years">2005 – 2014</span>
+              <span class="act-title-text">Technical &amp; Analytical Foundation</span>
+            </div>
+            <span class="act-sub">India &amp; United Kingdom · BA · PO · Graduate Programmer</span>
           </div>
         </div>
+        <div class="era-entries">
 
         <div class="exp-entry">
           <div class="exp-meta">
-            <div class="exp-date">Jan 2012<br>— Jan 2014</div>
-            <div class="exp-company">WorldPay · UK</div>
+            <div class="exp-date">Jan 2012 – Jan 2014</div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">WorldPay</span>
+            </div>
           </div>
           <div>
             <div class="exp-role">Product Owner</div>
@@ -730,14 +829,22 @@ footer {
               <li>Led the first-ever joint implementation of V.me by Visa digital wallet across Europe — a platform-first delivery in a dispersed Agile model.</li>
               <li>Delivered NextGen Hosted Payment Pages: platform and device agnostic, cross-geography, enterprise scale.</li>
             </ul>
-            <div class="exp-tags"><span class="exp-tag">Payments</span><span class="exp-tag">Visa</span><span class="exp-tag">Europe</span><span class="exp-tag">Fintech</span></div>
+            <div class="exp-tags"><span class="etag-hi">Product Leadership</span><span class="etag-hi">Stakeholder Management</span><span class="etag-mid">Business Analysis</span><span class="etag-lo">Platform Modernisation</span></div>
           </div>
         </div>
 
         <div class="exp-entry">
           <div class="exp-meta">
-            <div class="exp-date">2005–2012</div>
-            <div class="exp-company">Accenture · TCS · Cognizant · India</div>
+            <div class="exp-date">Aug 2005 – Jan 2012</div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Accenture</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">TCS</span>
+            </div>
+            <div class="exp-company-pill">
+              <span class="exp-company-name">Cognizant</span>
+            </div>
           </div>
           <div>
             <div class="exp-role">Business Analyst &amp; Graduate Programmer</div>
@@ -745,52 +852,67 @@ footer {
               <li>Process transformation at AEGON Insurance (Accenture); data migration at AVIVA Life and Superpartners (TCS); QA and BA foundations at UnitedHealth Group (Cognizant).</li>
               <li>Built the analytical and systems thinking discipline — COBOL, BPMN, UML, data architecture — that underpins all subsequent strategy and delivery work.</li>
             </ul>
-            <div class="exp-tags"><span class="exp-tag">Insurance</span><span class="exp-tag">Superannuation</span><span class="exp-tag">Data Migration</span><span class="exp-tag">BPMN/UML</span><span class="exp-tag">COBOL</span></div>
+            <div class="exp-tags"><span class="etag-mid">Business Analysis</span><span class="etag-mid">Operating Model Design</span><span class="etag-lo">Platform Modernisation</span><span class="etag-lo">BPMN · UML</span></div>
           </div>
         </div>
-      </div>
+
+        </div><!-- /era-entries -->
+      </div><!-- /era-box -->
     </section>
 
     <!-- PORTFOLIO -->
     <section class="section fade d3" id="media">
       <div class="sec-header"><div class="sec-title">Portfolio &amp; Media</div><div class="sec-rule"></div></div>
       <div class="media-grid">
+
         <a class="media-card" href="https://linkedin.com/in/sidlammata" target="_blank">
-          <div class="media-thumb mt-blue">💼</div>
+          <div class="media-card-top">
+            <span class="media-emoji">💼</span>
+          </div>
           <div class="media-body">
-            <div class="media-type">LinkedIn · Profile &amp; Recommendations</div>
-            <div class="media-title">Full professional profile, endorsements &amp; client recommendations</div>
+            <div class="media-type">LinkedIn · Profile</div>
+            <div class="media-title">Professional profile, endorsements &amp; recommendations</div>
             <div class="media-desc">The complete career narrative with peer and client testimonials.</div>
-            <div class="media-cta">View on LinkedIn</div>
+            <div class="media-cta">View profile</div>
           </div>
         </a>
-        <a class="media-card" href="https://lowcodesid.github.io/" target="_blank">
-          <div class="media-thumb mt-slate">⚙️</div>
+
+        <a class="media-card" href="https://lowcodesid.github.io/AI-governance/" target="_blank">
+          <div class="media-card-top">
+            <span class="media-emoji">🛡️</span>
+          </div>
           <div class="media-body">
-            <div class="media-type">GitHub · Rapid Prototyping Portfolio</div>
-            <div class="media-title">AI-assisted &amp; low-code prototyping experiments</div>
-            <div class="media-desc">Working apps built fast — the same rapid prototyping method used to de-risk and validate AI initiatives in client engagements.</div>
+            <div class="media-type">Framework · AI Governance</div>
+            <div class="media-title">AI Governance Playbook — Field Reference v1.0</div>
+            <div class="media-desc">12-section enterprise governance framework covering risk classification, RACI, use-case prioritisation, responsible AI, and exec comms.</div>
+            <div class="media-cta">View playbook</div>
+          </div>
+        </a>
+
+        <a class="media-card" href="https://lowcodesid.github.io/" target="_blank">
+          <div class="media-card-top">
+            <span class="media-emoji">⚙️</span>
+          </div>
+          <div class="media-body">
+            <div class="media-type">GitHub · Rapid Prototyping</div>
+            <div class="media-title">AI-assisted &amp; low-code prototyping portfolio</div>
+            <div class="media-desc">Working apps built fast — the rapid prototyping method used to de-risk and validate AI initiatives in client engagements.</div>
             <div class="media-cta">View portfolio</div>
           </div>
         </a>
+
         <div class="media-card" style="cursor:default">
-          <div class="media-thumb mt-warm">🚀</div>
+          <div class="media-card-top">
+            <span class="media-emoji">🚀</span>
+          </div>
           <div class="media-body">
             <div class="media-type">Case Study · Product Delivery</div>
             <div class="media-title">Zero to market in 4 months: ELMO Experiences module</div>
-            <div class="media-desc">Leading a 4-person team to ship an HRIS module from brief to live product while coaching 4 concurrent delivery teams. Launched Aug 2021.</div>
+            <div class="media-desc">Leading a 4-person team to ship an HRIS module while coaching 4 concurrent delivery teams. Aug 2021.</div>
             <div class="media-cta" style="color:var(--text-3)">Coming soon</div>
           </div>
         </div>
-        <div class="media-card" style="cursor:default">
-          <div class="media-thumb mt-green">🤖</div>
-          <div class="media-body">
-            <div class="media-type">Case Study · AI Transformation</div>
-            <div class="media-title">AI use-case discovery to production: Financial services</div>
-            <div class="media-desc">Structured discovery that surfaced and prioritised a pipeline of AI opportunities — with 3 moved to production within 6 months.</div>
-            <div class="media-cta" style="color:var(--text-3)">Coming soon</div>
-          </div>
-        </div>
+
       </div>
     </section>
 
